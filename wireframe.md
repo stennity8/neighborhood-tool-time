@@ -1,5 +1,7 @@
-#Neighborhood Tool Time
-###General Info:
+# Neighborhood Tool Time
+
+### General Info:
+
 This will be a marketplace for a neighborhood that allows neighbors to lend/borrow tools, lawn equipment, etc.
 
 ### Models
