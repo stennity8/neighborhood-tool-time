@@ -32,6 +32,7 @@ gem 'devise'
 gem 'city-state'
 gem 'dotenv-rails'
 gem 'omniauth-github'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

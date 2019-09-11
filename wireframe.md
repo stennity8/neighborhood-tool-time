@@ -39,13 +39,13 @@ User, equipment, Category, Session, Borrows, equipment_category
 
 \*required
 
-| **Attributes:**          | **Associations**                                     |
-| ------------------------ | ---------------------------------------------------- |
-| begin_date\* - datetime  | belongs_to :user                                     |
-| end_date\* - datetime    | has_many :borrows                                    |
-| return_date - datetime   | has_many :users, through: :borrows                   |
-| equipment_id\* - integer | has_many :equipment_categories                       |
-| user_id\* - integer      | has_many :categories, through: :equipment_categories |
+| **Attributes:**          | **Associations**      |
+| ------------------------ | --------------------- |
+| begin_date\* - datetime  | belongs_to :user      |
+| end_date\* - datetime    | belongs_to :equipment |
+| return_date - datetime   |                       |
+| equipment_id\* - integer |                       |
+| user_id\* - integer      |                       |
 
 ### Category
 

@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(version: 2019_09_11_200223) do
     t.string "description", null: false
     t.string "pic_url"
     t.boolean "available", default: true
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_equipment_on_user_id"
   end
 
   create_table "equipment_categories", force: :cascade do |t|
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_200223) do
 
   add_foreign_key "borrows", "equipment"
   add_foreign_key "borrows", "users"
+  add_foreign_key "equipment", "users"
   add_foreign_key "equipment_categories", "categories"
   add_foreign_key "equipment_categories", "equipment"
 end
