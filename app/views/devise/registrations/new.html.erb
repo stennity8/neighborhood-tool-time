@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container form-container">
   <h2>Sign up</h2>
   
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -9,29 +9,19 @@
           <i class="material-icons prefix">account_box</i>
           <%= f.text_field :name, autocomplete: "name", placeholder: "Full Name" %>
         </div>
-      </div>
-    </div>
-    
-    <div class="field">
-      <div class="row">
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">email</i>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-mail" %>
         </div>
       </div>
     </div>
-  
+
     <div class="field">
       <div class="row">
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">lock</i>
           <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
         </div>
-      </div>
-    </div>
-  
-    <div class="field">
-      <div class="row">
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">lock</i>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %>
@@ -54,10 +44,12 @@
     <div class="field">
       <div class="row">
         <div class="input-field col s12 m6">
+          <i class="material-icons prefix">account_box</i>
           <%= f.text_field :city, autocomplete: "city", placeholder: "City" %>
         </div>
   
         <div class="input-field col s12 m6">
+          <i class="material-icons prefix">account_box</i>
           <%= f.text_field :zip_code, autocomplete: "zip_code", placeholder: "Zip Code" %>
         </div>
       </div>

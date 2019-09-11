@@ -21,6 +21,7 @@ $primary-color: color("indigo", "base") !default;
 $primary-color-light: false !default;
 $primary-color-dark: false !default;
 
+
 @if not $primary-color-light {
   $primary-color-light: lighten($primary-color, 15%);
 }
@@ -34,4 +35,21 @@ $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 
 $link-color: color("light-blue", "darken-1") !default;
+
+$light-background: #c5cae9;
+$divider: #bdbdbd;
+$primary-text: #212121;
 @import "materialize";
+
+.error-message {
+  color: white;
+  background: $error-color
+}
+
+.form-container {
+  margin-top: 1.25rem;
+  border: 3px solid $divider;
+  border-radius: 25px;
+  padding: 0px 20px 20px 20px;
+  color: $primary-text;
+}
