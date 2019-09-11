@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[github]
-  has_many :equipments
+  has_many :owned_equipments, foreign_key: "user_id", class_name: "Equipment"
   has_many :borrows
   has_many :equipments, through: :borrows
 

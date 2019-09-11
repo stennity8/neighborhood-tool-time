@@ -19,7 +19,7 @@ EquipmentCategory.destroy_all
   )
 end
 
-5.times do
+10.times do
   Category.create(
     title: Faker::Superhero.power
   )
@@ -31,4 +31,19 @@ end
     description: Faker::ChuckNorris.fact,
     user_id: Faker::Number.between(from: 1, to: 10)
   )
+end
+
+50.times do
+  Borrow.create(
+    user_id: Faker::Number.between(from: 1, to: 10),
+    equipment_id: Faker::Number.between(from: 1, to: 20),
+    start_time: Faker::Time.between_dates(from: DateTime.now, to: DateTime.now + Faker::Number.between(from: 1, to: 7), period: :all),
+    end_time: Faker::Time.between_dates(from: DateTime.now, to: DateTime.now + Faker::Number.between(from: 1, to: 7), period: :all)
+  )
+end
+
+Equipment.all.each do |equipment|
+  2.times do
+    equipment.categories << Category.find(Faker::Number.between(from: 1, to: 10))
+  end
 end
