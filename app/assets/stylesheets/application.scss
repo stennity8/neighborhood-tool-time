@@ -1,55 +1,30 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import "bootstrap";
 
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import "materialize/components/color-variables";
-// $primary-color: color("blue", "darken-4") !default;
-$primary-color: color("indigo", "base") !default;
-$primary-color-light: false !default;
-$primary-color-dark: false !default;
-
-
-@if not $primary-color-light {
-  $primary-color-light: lighten($primary-color, 15%);
-}
-
-@if not $primary-color-dark {
-  $primary-color-dark: darken($primary-color, 15%);
-}
-
-$secondary-color: color("light-green", "base") !default;
-$success-color: color("green", "base") !default;
-$error-color: color("red", "base") !default;
-
-$link-color: color("light-blue", "darken-1") !default;
-
-$light-background: #c5cae9;
-$divider: #bdbdbd;
+$dark-primary: #303f9f;
+$light-primary: #c5cae9;
+$primary-base: #3f51b5;
+$text-icons: #ffffff;
+$accent: #8bc34a;
 $primary-text: #212121;
-@import "materialize";
+$secondary-text: font(#757575);
+$divider-color: #bdbdbd;
 
-.error-message {
-  color: white;
-  background: $error-color
+.background-dark-primary {
+  background-color: $dark-primary;
 }
 
-.form-container {
-  margin-top: 1.25rem;
-  border: 3px solid $divider;
-  border-radius: 25px;
-  padding: 0px 20px 20px 20px;
-  color: $primary-text;
+.background-light-primary {
+  background-color: $light-primary;
+}
+
+.background-accent {
+  background-color: $accent;
+}
+
+.text-icons {
+  color: $text-icons;
+}
+
+ul.navbar-nav a:hover {
+  color: $accent !important;
 }
