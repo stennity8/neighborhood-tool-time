@@ -1,5 +1,6 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" class="error-message">
+  <div id="error_explanation" class="error-message alert alert-danger">
+  <a href="/users/sign_up" class="close" data-dismiss="alert">&#215;</a>
     <h4>
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
@@ -13,3 +14,4 @@
     </ul>
   </div>
 <% end %>
+
