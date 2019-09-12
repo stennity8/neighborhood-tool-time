@@ -21,6 +21,7 @@ class User < ApplicationRecord
     end.flatten
   end
 
-  def self.borrowed
+  def borrowed
+    self.borrows.where("start_time <= ? AND end_time > ?", DateTime.now, DateTime.now)
   end
 end

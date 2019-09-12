@@ -38,7 +38,7 @@
             <th scope="col">Return Date</th>
           </tr>
         </thead>
-        <% @user.borrows.each do |borrow| %>
+        <% @user.borrowed.each do |borrow| %>
         <tr>
           <td><%= borrow.equipment.name %></td>
           <td><%= borrow.equipment.brand %></td>
