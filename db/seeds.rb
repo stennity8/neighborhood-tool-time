@@ -11,6 +11,18 @@ Category.destroy_all
 Borrow.destroy_all
 EquipmentCategory.destroy_all
 
+User.create(
+  name: "Chuck Gato",
+  email: "chuck@chuck.com",
+  password: "password" 
+)
+
+User.create(
+  name: "Tucker Gato",
+  email: "tuck@tuck.com",
+  password: "password" 
+)
+
 10.times do
   User.create(
     name: Faker::FunnyName.name,
@@ -29,7 +41,8 @@ end
   Equipment.create(
     name: Faker::Construction.heavy_equipment,
     description: Faker::ChuckNorris.fact,
-    user_id: Faker::Number.between(from: 1, to: 10)
+    user_id: Faker::Number.between(from: 1, to: 12),
+    pic_url: Faker::Avatar.image
   )
 end
 
