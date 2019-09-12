@@ -25,7 +25,11 @@ $divider-color: #bdbdbd;
   color: $text-icons;
 }
 
-ul.navbar-nav a:hover {
+div.navbar-nav a:hover {
+  color: $accent !important;
+}
+
+nav.navbar a::hover {
   color: $accent !important;
 }
 
