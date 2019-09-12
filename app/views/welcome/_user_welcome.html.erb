@@ -67,7 +67,7 @@
           </tr>
         </thead>
 
-        <% @user.owned_equipments.lent_out.each do |lent| %>
+        <% @user.lent_out.each do |lent| %>
         <tr>
           <td><%= lent.equipment.name %></td>
           <td><%= lent.equipment.brand %></td>

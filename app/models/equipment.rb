@@ -7,10 +7,4 @@ class Equipment < ApplicationRecord
 
   scope :unavailable, -> { where(available: false) }
 
-  def self.lent_out
-    unavailable.collect do |item|
-      item.borrows.where("start_time <= ? AND end_time > ?", DateTime.now, DateTime.now)
-    end.flatten
-  end
-
 end
