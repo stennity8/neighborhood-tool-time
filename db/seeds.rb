@@ -39,8 +39,8 @@ end
 
 30.times do
   Equipment.create(
-    name: Faker::IDNumber.invalid,
-    description: Faker::Hipster.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+    name: Faker::Commerce.product_name,
+    description: Faker::TvShows::MichaelScott.quote,
     user_id: Faker::Number.between(from: 1, to: 12),
     pic_url: Faker::Avatar.image,
     brand: Faker::TvShows::GameOfThrones.house
@@ -55,12 +55,14 @@ end
       break
     end
   end
+
+  @start = Faker::Time.between_dates(from: DateTime.now - Faker::Number.between(from: 0, to: 7), to: DateTime.now + Faker::Number.between(from: 1, to: 7), period: :all)
   
   Borrow.create(
     user_id: @num,
     equipment_id: @num2,
-    start_time: Faker::Time.between_dates(from: DateTime.now - Faker::Number.between(from: 0, to: 7), to: DateTime.now + Faker::Number.between(from: 1, to: 7), period: :all),
-    end_time: Faker::Time.between_dates(from: DateTime.now - Faker::Number.between(from: 0, to: 7), to: DateTime.now + Faker::Number.between(from: 1, to: 7), period: :all)
+    start_time: @start,
+    end_time: Faker::Time.between_dates(from: @start, to: DateTime.now + Faker::Number.between(from: 2, to: 7), period: :all)
   )
   Equipment.find(@num2).update(available: false)
 end

@@ -67,13 +67,13 @@
           </tr>
         </thead>
 
-        <% @user.owned_equipments.unavailable.each do |lent| %>
-        <% binding.pry%>
+        <% @user.owned_equipments.lent_out.each do |lent| %>
         <tr>
-          <td><%= lent.name %></td>
-          <td><%= lent.brand %></td>
-          <td><%= lent.description %></td>
-          
+          <td><%= lent.equipment.name %></td>
+          <td><%= lent.equipment.brand %></td>
+          <td><%= lent.equipment.description %></td>
+          <td><%= lent.start_time %></td>
+          <td><%= lent.end_time %></td>
           <% end %>
         </tr>
       </table>
