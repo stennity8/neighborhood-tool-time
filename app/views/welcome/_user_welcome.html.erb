@@ -12,7 +12,7 @@
             <th scope="col">Description</th>
           </tr>
         </thead>
-        <% @user.equipments.each do |eq| %>
+        <% @user.owned_equipments.each do |eq| %>
         <tr>
           <td><%= eq.name %></td>
           <td><%= eq.brand %></td>
@@ -34,7 +34,7 @@
             <th scope="col">Name</th>
             <th scope="col">Brand</th>
             <th scope="col">Description</th>
-            <th scope="col">Borrowed Date</th>
+            <th scope="col">Borrow Date</th>
             <th scope="col">Return Date</th>
           </tr>
         </thead>
@@ -62,19 +62,18 @@
             <th scope="col">Name</th>
             <th scope="col">Brand</th>
             <th scope="col">Description</th>
-            <th scope="col">Borrowed Date</th>
+            <th scope="col">Borrow Date</th>
             <th scope="col">Return Date</th>
           </tr>
         </thead>
-          <%binding.pry %>
 
-        <% @user.equipments.lent.each do |lent| %>
+        <% @user.owned_equipments.unavailable.each do |lent| %>
+        <% binding.pry%>
         <tr>
           <td><%= lent.name %></td>
           <td><%= lent.brand %></td>
           <td><%= lent.description %></td>
-          <td><%= lent.borrows.current.start_time %></td>
-          <td><%= lent.borrows.current.end_time %></td>
+          
           <% end %>
         </tr>
       </table>
