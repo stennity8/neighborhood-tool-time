@@ -1,1 +1,83 @@
-<h1>Hello World</h1>
+<div class="container">
+  <div class="container">
+    <div class="text-center">
+      <h3><%= @user.name %>'s Tool List</h3>
+    </div>
+    <div class="row">
+      <table class="table table-striped table-light">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <% @user.equipments.each do |eq| %>
+        <tr>
+          <td><%= eq.name %></td>
+          <td><%= eq.brand %></td>
+          <td><%= eq.description %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="text-center">
+      <h3><%= @user.name %>'s Borrowed Tool List</h3>
+    </div>
+    <div class="row">
+      <table class="table table-striped table-light">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Description</th>
+            <th scope="col">Borrowed Date</th>
+            <th scope="col">Return Date</th>
+          </tr>
+        </thead>
+        <% @user.borrows.each do |borrow| %>
+        <tr>
+          <td><%= borrow.equipment.name %></td>
+          <td><%= borrow.equipment.brand %></td>
+          <td><%= borrow.equipment.description %></td>
+          <td><%= borrow.start_time %></td>
+          <td><%= borrow.end_time %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="text-center">
+      <h3><%= @user.name %>'s Lent Out Tool List</h3>
+    </div>
+    <div class="row">
+      <table class="table table-striped table-light">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Description</th>
+            <th scope="col">Borrowed Date</th>
+            <th scope="col">Return Date</th>
+          </tr>
+        </thead>
+          <%binding.pry %>
+
+        <% @user.equipments.lent.each do |lent| %>
+        <tr>
+          <td><%= lent.name %></td>
+          <td><%= lent.brand %></td>
+          <td><%= lent.description %></td>
+          <td><%= lent.borrows.current.start_time %></td>
+          <td><%= lent.borrows.current.end_time %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

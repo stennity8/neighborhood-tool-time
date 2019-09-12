@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :borrows
   has_many :equipments, through: :borrows
 
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.extra.raw_info.email
