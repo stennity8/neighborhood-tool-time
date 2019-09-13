@@ -39,6 +39,10 @@ a.navbar-brand:hover {
   color: $accent !important;
 }
 
+a.nav-link:hover {
+  color: $accent !important;
+}
+
 a.dropdown-item:hover {
   background-color: $dark-primary;
   color: $accent !important;
