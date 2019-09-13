@@ -11,12 +11,17 @@ class EquipmentController < ApplicationController
   end
   
   def show
-    # @equipment = []
-    # @equipment << Equipment.find(params[:id])
     @user = User.find(params[:user_id])
     @equipment = [Equipment.find(params[:id])]
   end
 
+  def new
+    @equipment = Equipment.new
+  end
+
+  def create
+  end
+  
   def edit
   end
 
@@ -24,5 +29,11 @@ class EquipmentController < ApplicationController
   end
 
   def destroy
+  end
+
+  private 
+
+  def equipment_params
+    params.require(:equipment).permit(:name, :password, :nausea_rating, :happiness_rating, :tickets, :min_height)
   end
 end

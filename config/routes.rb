@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :equipment, only: [:index]
   
   resources :users, only: [:show] do
-    resources :equipment, only: [:index, :show, :edit, :update, :destroy]
+    resources :equipment, only: [:index, :show, :edit, :update, :destroy, :new, :create]
   end
 
 end
