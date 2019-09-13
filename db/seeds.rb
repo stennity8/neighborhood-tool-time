@@ -56,13 +56,13 @@ end
     end
   end
 
-  @start = Faker::Time.between_dates(from: DateTime.now - Faker::Number.between(from: 0, to: 7), to: DateTime.now + Faker::Number.between(from: 1, to: 7), period: :all)
+  @start = Faker::Time.between_dates(from: Time.current - Faker::Number.between(from: 0, to: 7), to: Time.current + Faker::Number.between(from: 1, to: 7), period: :all)
   
   Borrow.create(
     user_id: @num,
     equipment_id: @num2,
     start_time: @start,
-    end_time: Faker::Time.between_dates(from: @start, to: DateTime.now + Faker::Number.between(from: 2, to: 7), period: :all)
+    end_time: Faker::Time.between_dates(from: @start, to: Time.current + Faker::Number.between(from: 2, to: 7), period: :all)
   )
   Equipment.find(@num2).update(available: false)
 end
