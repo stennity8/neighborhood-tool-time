@@ -11,8 +11,10 @@ class EquipmentController < ApplicationController
   end
   
   def show
-    @equipment = []
-    @equipment << Equipment.find(params[:id])
+    # @equipment = []
+    # @equipment << Equipment.find(params[:id])
+    @user = User.find(params[:user_id])
+    @equipment = [Equipment.find(params[:id])]
   end
 
   def edit

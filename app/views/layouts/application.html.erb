@@ -34,11 +34,11 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Tools
         </a>
         <div class="dropdown-menu background-dark-primary " aria-labelledby="navbarDropdown">
-          <a class="dropdown-item text-light" href="#">All Tools</a>
-          <a class="dropdown-item text-light" href="#">Owned Tools</a>
+          <a class="dropdown-item text-light" href="/equipment">All Tools</a>
+          <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/equipment">Owned Tools</a>
           <a class="dropdown-item text-light" href="#">Borrowed Tools</a>
           <a class="dropdown-item text-light" href="#">Lent Out Tools</a>
         </div>

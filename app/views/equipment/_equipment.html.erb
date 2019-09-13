@@ -14,7 +14,10 @@
       <td><%= eq.brand %></td>
       <td><%= eq.description %></td>
       <td>
+        <%# binding.pry %>
+        <% if !params.include?(:user_id) && !params.include?(:id) %>
         <div class="p-1"><%= link_to 'View', user_equipment_path(eq.user_id, eq.id) %></div>
+        <% end %>
         <% if current_user.id == eq.user_id %>
         <div class="p-1"><%= link_to 'Edit/Delete', edit_user_equipment_path(eq.user_id, eq.id) %></div>
         <% end %>
