@@ -1,0 +1,49 @@
+// @import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+$dark-primary: #101952;
+$light-primary: #c5cae9;
+$primary-base: #2F3E9E;
+$text-icons: #ffffff;
+$accent: #83EB3B;
+$primary-text: #212121;
+$secondary-text: font(#757575);
+$divider-color: #bdbdbd;
+$header: #AB6044;
+
+.background-base {
+  background-color: $primary-base;
+}
+
+.background-dark-primary {
+  background-color: $dark-primary;
+}
+
+.background-light-primary {
+  background-color: $light-primary;
+}
+
+.background-accent {
+  background-color: $accent;
+}
+
+.text-icons {
+  color: $text-icons;
+}
+
+div.navbar-nav a:hover {
+  color: $accent !important;
+}
+
+a.navbar-brand:hover {
+  color: $accent !important;
+}
+
+a.dropdown-item:hover {
+  background-color: $dark-primary;
+  color: $accent !important;
+}
+
+.rounded-container {
+  border-radius: 25px;
+}
