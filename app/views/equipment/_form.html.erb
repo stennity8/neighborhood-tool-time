@@ -14,5 +14,10 @@
     <% end %>
   <% end %>
 
-  <%= f.button :submit, value: "Create Tool", class: "btn background-accent" %>
+  <% if params[:id] %>
+    <%= f.button :submit, value: "Update Tool", class: "btn background-accent" %>
+  <% else %>
+    <%= f.button :submit, value: "Create Tool", class: "btn background-accent" %>
+  <% end %>
+  
 <% end %>

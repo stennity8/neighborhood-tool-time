@@ -35,8 +35,8 @@ class EquipmentController < ApplicationController
   def update
     @equipment = Equipment.find(params[:id])
     
-    @equipment.update(equipment_params)
     binding.pry
+    @equipment.update(equipment_params)
     redirect_to user_equipment_index_path
   end
 
