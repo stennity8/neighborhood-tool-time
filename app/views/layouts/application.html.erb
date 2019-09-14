@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 
 <head>
@@ -57,8 +57,68 @@
   </div>
 </nav>
 
-  <%= yield %>
+  
 
 </body>
 
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeighborhoodToolTime</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body class="background-light-primary container-fluid p-0">
+  <nav class="navbar navbar-expand-lg background-dark-primary navbar-dark sticky-top">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon "></span>
+  </button>
+
+  <div class="collapse navbar-collapse background-dark-primary navbar-dark sticky-top" id="navbarNavAltMarkup">
+    <ul class="navbar-nav mr-auto">
+      <% if current_user %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Tools
+        </a>
+        <div class="dropdown-menu background-dark-primary " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item text-light" href="/equipment">All Tools</a>
+          <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/equipment">Owned Tools</a>
+          <a class="dropdown-item text-light" href="#">Borrowed Tools</a>
+          <a class="dropdown-item text-light" href="#">Lent Out Tools</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Future link</a>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <%= link_to('Log Out', destroy_user_session_path, method: :delete, class: "nav-item nav-link text-icons") %>
+      <% else %>
+      <a class="nav-item nav-link text-icons" href="/users/sign_up">Sign Up</a>
+      <a class="nav-item nav-link text-icons" href="/users/sign_in">Log In</a>
+    <% end %>
+    </form>
+  </div>
+</nav>
+  <%= yield %>
+</body>
 </html>
