@@ -15,8 +15,7 @@ class Equipment < ApplicationRecord
   
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
-      category = Category.find_or_create_by(category_attribute) if !category_attribute.empty?
-      self.categories << category
+      self.categories << Category.find_or_create_by(category_attribute) if !category_attribute[:title].empty?
     end
   end
 
