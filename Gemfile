@@ -33,7 +33,7 @@ gem 'omniauth-github'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # gem 'bootstrap', '~> 4.3.1'
 # gem 'jquery-rails'
-
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
