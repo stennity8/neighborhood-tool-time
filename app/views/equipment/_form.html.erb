@@ -1,4 +1,18 @@
- 
-<%= form_for @equipment do |f| %>
+<%= simple_form_for [current_user, @equipment] do |f| %>
+  <%= f.input :name, label: "Name" %>
+  <%= f.input :brand, label: "Brand" %>
+  <%= f.input :description, label: "Description" %>
+  <%= f.input :pic_url, label: "Link to Image(optional)" %>
+  <%= f.association :categories, label: "Select Categories(CTRL+ to select multiple)" %>
 
-<%  end %>
+  <%= f.input :categories, label: "Add New Categories" do %>
+    <br>
+    <% 4.times do %>
+    <%= f.fields_for :categories, @equipment.categories.build do |categories_fields| %>
+      <%= categories_fields.text_field :title %>
+    <% end %>
+    <% end %>
+  <% end %>
+
+  <%= f.button :submit, value: "Create Tool", class: "btn background-accent" %>
+<% end %>

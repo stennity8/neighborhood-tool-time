@@ -20,6 +20,12 @@ class EquipmentController < ApplicationController
   end
 
   def create
+    @equipment = Equipment.new(equipment_params)
+    @equipment.user_id = params[:user_id]
+    binding.pry
+    @equipment.save
+
+    redirect_to user_equipment_index_path
   end
   
   def edit
@@ -34,6 +40,6 @@ class EquipmentController < ApplicationController
   private 
 
   def equipment_params
-    params.require(:equipment).permit(:name)
+    params.require(:equipment).permit(:name, :brand, :description, :pic_url, category_ids:[], categories_attributes: [:title])
   end
 end
