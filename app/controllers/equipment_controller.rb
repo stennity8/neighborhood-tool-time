@@ -29,9 +29,15 @@ class EquipmentController < ApplicationController
   end
   
   def edit
+    @equipment = Equipment.find(params[:id])
   end
-
+  
   def update
+    @equipment = Equipment.find(params[:id])
+    
+    @equipment.update(equipment_params)
+    binding.pry
+    redirect_to user_equipment_index_path
   end
 
   def destroy
