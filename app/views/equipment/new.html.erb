@@ -1,0 +1,3 @@
+<%= form_with model: [current_user, Equipment.new], url: user_equipment_index_path(current_user.id), method: :post do |f| %>
+<%= f.text_field :name %>
+<% end %>

@@ -34,6 +34,6 @@ class EquipmentController < ApplicationController
   private 
 
   def equipment_params
-    params.require(:equipment).permit(:name, :password, :nausea_rating, :happiness_rating, :tickets, :min_height)
+    params.require(:equipment).permit(:name)
   end
 end
