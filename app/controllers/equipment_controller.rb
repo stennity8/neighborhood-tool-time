@@ -49,7 +49,7 @@ class EquipmentController < ApplicationController
       @equipment.destroy
       redirect_to user_equipment_index_path
     else
-      flash[:danger] = "This tool can not be deleted."
+      flash[:danger] = "This tool can not be deleted. It is or has been lent out and a record is being kept."
       redirect_to user_equipment_index_path
     end
   end
