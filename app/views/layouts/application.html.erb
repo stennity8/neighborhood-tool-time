@@ -37,8 +37,8 @@
         <div class="dropdown-menu background-dark-primary " aria-labelledby="navbarDropdown">
           <a class="dropdown-item text-light" href="/equipment">All Tools</a>
           <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/equipment">Owned Tools</a>
-          <a class="dropdown-item text-light" href="#">Borrowed Tools</a>
-          <a class="dropdown-item text-light" href="#">Lent Out Tools</a>
+          <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/borrowed_tools">Borrowed Tools</a>
+          <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/lent_tools">Lent Out Tools</a>
         </div>
       </li>
       <li class="nav-item">
