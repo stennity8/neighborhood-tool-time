@@ -14,10 +14,12 @@
     <% end %>
   <% end %>
 
+  <div class="text-center">
   <% if params[:id] %>
     <%= f.button :submit, value: "Update Tool", class: "btn background-accent" %>
+    <%= link_to('Delete Tool', user_equipment_path, method: :delete, class: "btn btn-danger") %>
   <% else %>
     <%= f.button :submit, value: "Create Tool", class: "btn background-accent" %>
   <% end %>
-  
+  </div>
 <% end %>

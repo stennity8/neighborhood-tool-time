@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :equipment, only: [:index]
+  resources :borrows, only: [:index]
   
   resources :users, only: [:show] do
     resources :equipment, only: [:index, :show, :edit, :update, :destroy, :new, :create]
+    resources :borrows, only: [:index, :show, :edit, :update, :destroy, :new, :create]
   end
 
 end

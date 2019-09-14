@@ -39,8 +39,19 @@ class EquipmentController < ApplicationController
     
     redirect_to user_equipment_index_path
   end
-
+  
   def destroy
+    binding.pry
+    @equipment = Equipment.find(params[:id])
+
+    if @equipment.borrows.empty?
+      @equipment.categories.clear
+      @equipment.destroy
+      redirect_to user_equipment_index_path
+    else
+      flash[:danger] = "This tool can not be deleted."
+      redirect_to user_equipment_index_path
+    end
   end
 
   private 
