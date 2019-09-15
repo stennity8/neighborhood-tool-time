@@ -1,0 +1,13 @@
+<%= simple_form_for [current_user, @borrow] do |f| %>
+  <%= f.text_field :start_time, data: { behavior: "flatpickr" } %>
+
+
+  <div class="text-center">
+  <% if !@borrow.start_time.nil? %>
+    <%= f.button :submit, value: "Update Borrow", class: "btn background-accent" %>
+    <%= link_to('Cancel Borrow', user_borrow_path, method: :delete, class: "btn btn-danger") %>
+  <% else %>
+    <%= f.button :submit, value: "Create Borrow", class: "btn background-accent" %>
+  <% end %>
+  </div>
+<% end %>

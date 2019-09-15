@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show] do
     resources :equipment, only: [:index, :show, :edit, :update, :destroy, :new, :create]
-    resources :borrows, only: [:show, :edit, :update, :destroy, :new, :create]
+    resources :borrows, only: [:show, :edit, :update, :destroy, :create]
     get 'borrowed_tools', to: 'borrows#borrowed_equipment'
     get 'lent_tools', to: 'borrows#lent_equipment'
+    get 'borrows/:id/new', to: 'borrows#new', as: 'new_borrow'
   end
 
 end

@@ -28,7 +28,7 @@
         <% if current_user.id == eq.user_id %>
         <div class="p-1"><%= link_to 'Edit/Delete', edit_user_equipment_path(eq.user_id, eq.id) %></div>
         <% else %>
-        <div class="p-1"><%= link_to 'Borrow', edit_user_equipment_path(eq.user_id, eq.id) %></div>
+        <div class="p-1"><%= link_to 'Borrow', user_new_borrow_path(current_user.id, eq.id) %></div>
         <% end %>
       </td>
       <% end %>

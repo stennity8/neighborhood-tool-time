@@ -4,7 +4,6 @@ class BorrowsController < ApplicationController
   def lent_equipment
     @equipment = current_user.owned_equipments
     @borrows = Borrow.user_borrows(@equipment)
-    binding.pry
   end
 
   def borrowed_equipment
@@ -20,6 +19,7 @@ class BorrowsController < ApplicationController
   
   def new
     @borrow = Borrow.new
+    @equipment = Equipment.find(params[:id])
   end
   
   def create
@@ -32,6 +32,7 @@ class BorrowsController < ApplicationController
   end
   
   def edit
+    binding.pry
     @equipment = User.find(params[:user_id])
     @borrow = Borrow.find(params[:id])
   end
