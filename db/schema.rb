@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_200223) do
 
   create_table "borrows", force: :cascade do |t|
     t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
+    t.datetime "end_time"
     t.boolean "returned", default: false
     t.bigint "user_id", null: false
     t.bigint "equipment_id", null: false
