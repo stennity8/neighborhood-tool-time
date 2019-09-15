@@ -2,6 +2,9 @@ class BorrowsController < ApplicationController
   before_action :authenticate_user!
 
   def lent_equipment
+    @equipment = current_user.owned_equipments
+    @borrows = Borrow.user_borrows(@equipment)
+    binding.pry
   end
 
   def borrowed_equipment

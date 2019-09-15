@@ -1,0 +1,26 @@
+<div class="row ">
+  <table class="table table-striped table-light table-responsive-sm">
+    <thead class="background-base text-light text-center">
+      <tr>
+        <th scope="col">Tool Name</th>
+        <th scope="col">Borrower's Name</th>
+        <th scope="col">Borrow Date</th>
+        <!--<th scope="col">Return Date</th>-->
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @borrows.each do |borrow| %>
+    <tr class="text-center">
+      <td><%= borrow.equipment.name %></td>
+      <td><%= borrow.user.name %></td>
+      <td><%= borrow.borrow_date %></td>
+      <!--<td><%= borrow.end_time %></td>-->
+      <td>
+        <div class="p-1"><%= link_to 'View/Return', edit_user_borrow_path(current_user.id, borrow.id) %></div>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
