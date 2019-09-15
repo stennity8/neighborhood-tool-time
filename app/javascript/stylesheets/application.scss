@@ -11,6 +11,13 @@ $secondary-text: font(#757575);
 $divider-color: #bdbdbd;
 $header: #AB6044;
 
+table td[class*=col-],
+table th[class*=col-] {
+  position: static;
+  display: table-cell;
+  float: none;
+}
+
 .background-base {
   background-color: $primary-base;
 }
