@@ -6,6 +6,7 @@ class Equipment < ApplicationRecord
   has_many :categories, through: :equipment_categories
 
   scope :unavailable, -> { where(available: false) }
+  #scope :pending_returned_equipment, -> (user_id) {left_outer_joins(:borrows).where("available = ? AND returned = ? AND equipment.user_id = ?", false, false, user_id)}
 
   def category_ids=(category_ids)
     category_ids.each do |category_id|

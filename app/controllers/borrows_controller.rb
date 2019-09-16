@@ -3,7 +3,8 @@ class BorrowsController < ApplicationController
 
   def lent_equipment
     @equipment = current_user.owned_equipments
-    @borrows = Borrow.user_borrows(@equipment)
+    @current_borrows = Borrow.currently_lent(current_user.id)
+    @pending_return_borrows = Borrow.pending_return_verification(current_user.id)
   end
 
   def borrowed_equipment
@@ -37,22 +38,29 @@ class BorrowsController < ApplicationController
   
   def update
     @borrow = Borrow.find(params[:id])
-    # If the user marks the tool returned before the borrower
-    if current_user.id != @borrow.user_id  
-      @borrow.update(borrow_params)
-      @borrow.end_time = Date.current.strftime('%Y-%m-%d')
-      @borrow.equipment.available = true
-      @borrow.save
-      @borrow.equipment.save
-      
-      binding.pry
-      redirect_to user_lent_tools_path
+    
+    # Check for return param
+    if borrow_params[:returned]
+      # If the user marks the tool returned before the borrower
+      if current_user.id != @borrow.user_id  
+        @borrow.update(borrow_params)
+        @borrow.end_time = Date.current.strftime('%Y-%m-%d')
+        @borrow.equipment.available = true
+        @borrow.save
+        @borrow.equipment.save
+
+        redirect_to user_lent_tools_path
+      else
+      # If borrower marks tool returned
+        @borrow.update(borrow_params)
+        @borrow.end_time = Date.current
+        @borrow.save
+        
+        redirect_to user_borrowed_tools_path
+      end
     else
       @borrow.update(borrow_params)
-      @borrow.end_time = Date.current
-      @borrow.save
       
-      binding.pry
       redirect_to user_borrowed_tools_path
     end
     

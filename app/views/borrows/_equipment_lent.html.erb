@@ -1,4 +1,5 @@
 <div class="row">
+<h3>Returned Pending Verification</h3>
   <table class="table table-striped table-light table-responsive-sm">
     <thead class="background-base text-light text-center">
       <tr>
@@ -10,7 +11,36 @@
       </tr>
     </thead>
     <tbody>
-    <% @borrows.each do |borrow| %>
+    <% @pending_return_borrows.each do |borrow| %>
+    <tr class="text-center">
+      <td><%= borrow.equipment.name %></td>
+      <td><%= borrow.user.name %></td>
+      <td><%= borrow.date("start") %></td>
+      <td><%= borrow.date("anticipated_end") %></td>
+      <td>
+        <div class="p-1"><%= link_to 'View/Confirm Return', edit_user_borrow_path(current_user.id, borrow.id) %></div>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="row">
+<h3>Currently Lent Out</h3>
+  <table class="table table-striped table-light table-responsive-sm">
+    <thead class="background-base text-light text-center">
+      <tr>
+        <th scope="col">Tool Name</th>
+        <th scope="col">Borrower's Name</th>
+        <th scope="col">Borrow Date</th>
+        <th scope="col">Anticipated Return Date</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @current_borrows.each do |borrow| %>
     <tr class="text-center">
       <td><%= borrow.equipment.name %></td>
       <td><%= borrow.user.name %></td>

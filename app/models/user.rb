@@ -15,13 +15,17 @@ class User < ApplicationRecord
    end
   end
 
-  def lent_out
-    self.owned_equipments.unavailable.collect do |item|
-      item.borrows.where("start_time <= ? AND end_time > ?", DateTime.now, DateTime.now)
-    end.flatten
+  def lent_out_non_returned
+    binding.pry
   end
 
-  def borrowed
-    self.borrows.where("start_time <= ? AND end_time > ?", DateTime.now, DateTime.now)
-  end
+  # def lent_out
+  #   self.owned_equipments.unavailable.collect do |item|
+  #     item.borrows.where("start_time <= ? AND end_time > ?", DateTime.now, DateTime.now)
+  #   end.flatten
+  # end
+
+  # def borrowed
+  #   self.borrows.where("start_time <= ? AND end_time > ?", DateTime.now, DateTime.now)
+  # end
 end
