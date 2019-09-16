@@ -6,10 +6,11 @@ class BorrowsController < ApplicationController
     @current_borrows = current_user.current_lent
     @pending_return_borrows = current_user.current_lent_pending_return_verification
   end
-
+  
   def borrowed_equipment
     @equipment = current_user.equipments
-    @borrows = current_user.borrows
+    @current_borrows = current_user.current_borrows
+    @pending_return_borrows = current_user.current_borrows_pending_return_verification
   end
 
   
