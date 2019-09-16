@@ -5,12 +5,13 @@
   <%= f.text_field :start_time, data: { behavior: "flatpickr" } %>
 
   <%= f.label "Anticipated Return Date:" %>
-  <%= f.text_field :end_time, data: { behavior: "flatpickr" } %>
+  <%= f.text_field :anticipated_end_time, data: { behavior: "flatpickr" } %>
 
   <div class="text-center">
-  <% if !@borrow.start_time.nil? %>
+  <% if @borrow.returned == false %>
     <%= f.button :submit, value: "Change Dates", class: "btn background-accent mt-2" %>
     <%= link_to('Cancel Borrow', user_borrow_path, method: :delete, class: "btn btn-danger mt-2") %>
+    <%= f.button :submit, value: "Return Tool", class: "btn btn-warning mt-2" %>
   <% else %>
     <%= f.button :submit, value: "Create Borrow", class: "btn background-accent mt-2" %>
   <% end %>

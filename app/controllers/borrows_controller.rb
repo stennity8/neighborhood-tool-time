@@ -33,10 +33,10 @@ class BorrowsController < ApplicationController
   def edit
     @borrow = Borrow.find(params[:id])
     @equipment = @borrow.equipment
-    
   end
   
   def update
+    binding.pry
     @borrow = Borrow.find(params[:id])
     @borrow.update(borrow_params)
     
@@ -44,7 +44,6 @@ class BorrowsController < ApplicationController
   end
   
   def destroy
-    binding.pry
     @borrow = Borrow.find(params[:id])
     @borrow.destroy
     flash[:danger] = "The borrow has been deleted."
@@ -56,7 +55,7 @@ class BorrowsController < ApplicationController
   private 
 
   def borrow_params
-    params.require(:borrow).permit(:start_time, :end_time, :returned, :user_id, :equipment_id)
+    params.require(:borrow).permit(:start_time, :end_time, :returned, :user_id, :equipment_id, :anticipated_end_time)
   end
 
 end

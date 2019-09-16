@@ -2,14 +2,17 @@ class Borrow < ApplicationRecord
   belongs_to :user
   belongs_to :equipment
 
-  def borrow_date
+  
+  def date(type)
+    if type == 'start'
       self.start_time.strftime("%A, %b %d, %Y") if self.start_time
+    elsif type == 'end'
+      self.end_time.strftime("%A, %b %d, %Y") if self.end_time
+    elsif type == 'anticipated_end'
+      self.anticipated_end_time.strftime("%A, %b %d, %Y") if self.anticipated_end_time
+    end      
   end
   
-  def return_date
-      self.end_time.strftime("%A, %b %d, %Y") if self.end_time
-  end
-
   def self.user_borrows(equipment)
     equipment.each.collect do |equipment|
       equipment.borrows
