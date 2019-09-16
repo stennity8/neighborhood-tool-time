@@ -79,7 +79,7 @@ end
     user_id: @num,
     equipment_id: @num2,
     start_time: @start,
-    end_time: @end
+    anticipated_end_time: @end
   )
   Equipment.find(@num2).update(available: false)
 end

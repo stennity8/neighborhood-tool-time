@@ -1,7 +1,7 @@
 class Borrow < ApplicationRecord
   belongs_to :user
   belongs_to :equipment
-
+  validates :start_time, :anticipated_end_time, presence: true
   
   def date(type)
     if type == 'start'

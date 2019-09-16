@@ -36,11 +36,26 @@ class BorrowsController < ApplicationController
   end
   
   def update
-    binding.pry
     @borrow = Borrow.find(params[:id])
-    @borrow.update(borrow_params)
+    # If the user marks the tool returned before the borrower
+    if current_user.id != @borrow.user_id  
+      @borrow.update(borrow_params)
+      @borrow.end_time = Date.current.strftime('%Y-%m-%d')
+      @borrow.equipment.available = true
+      @borrow.save
+      @borrow.equipment.save
+      
+      binding.pry
+      redirect_to user_lent_tools_path
+    else
+      @borrow.update(borrow_params)
+      @borrow.end_time = Date.current
+      @borrow.save
+      
+      binding.pry
+      redirect_to user_borrowed_tools_path
+    end
     
-    redirect_to user_borrowed_tools_path
   end
   
   def destroy
