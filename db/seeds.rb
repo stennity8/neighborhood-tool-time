@@ -56,12 +56,12 @@ end
     end
   end
 
-  @start = Faker::Time.between_dates(from: DateTime.now - Faker::Number.between(from: 0, to: 7), to: DateTime.now + Faker::Number.between(from: 1, to: 7), period: :all)
+  @start = Faker::Time.between_dates(from: Date.current - Faker::Number.between(from: 0, to: 7), to: Date.current + Faker::Number.between(from: 1, to: 7), period: :all)
   
-  if @start > DateTime.now
+  if @start > Date.current
     @end = nil
   else
-    @end = Faker::Time.between_dates(from: @start, to: DateTime.now + Faker::Number.between(from: 2, to: 7), period: :all)
+    @end = Faker::Time.between_dates(from: @start, to: Date.current + Faker::Number.between(from: 2, to: 7), period: :all)
   end
 
   Borrow.create(

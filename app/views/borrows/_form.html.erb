@@ -1,13 +1,18 @@
 <%= simple_form_for [current_user, @borrow] do |f| %>
+  <%= f.input :equipment_id, :as => :hidden, :input_html => { :value => @equipment.id } %>
+  
+  <%= f.label "Borrow Date:" %>
   <%= f.text_field :start_time, data: { behavior: "flatpickr" } %>
 
+  <%= f.label "Anticipated Return Date:" %>
+  <%= f.text_field :end_time, data: { behavior: "flatpickr" } %>
 
   <div class="text-center">
   <% if !@borrow.start_time.nil? %>
-    <%= f.button :submit, value: "Update Borrow", class: "btn background-accent" %>
-    <%= link_to('Cancel Borrow', user_borrow_path, method: :delete, class: "btn btn-danger") %>
+    <%= f.button :submit, value: "Change Dates", class: "btn background-accent mt-2" %>
+    <%= link_to('Cancel Borrow', user_borrow_path, method: :delete, class: "btn btn-danger mt-2") %>
   <% else %>
-    <%= f.button :submit, value: "Create Borrow", class: "btn background-accent" %>
+    <%= f.button :submit, value: "Create Borrow", class: "btn background-accent mt-2" %>
   <% end %>
   </div>
 <% end %>
