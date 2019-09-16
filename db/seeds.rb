@@ -11,6 +11,14 @@ Category.destroy_all
 Borrow.destroy_all
 EquipmentCategory.destroy_all
 
+def user_equip
+  @num = Faker::Number.between(from: 1, to: 12)
+  @num2 = Faker::Number.between(from: 1, to: 30)
+  if User.find(@num).owned_equipments.collect{|e| e.user_id}.include?(@num2)
+    user_equip
+  end
+end
+
 User.create(
   name: "Chuck Gato",
   email: "chuck@chuck.com",
@@ -48,13 +56,16 @@ end
 end
 
 100.times do
-  loop do
-    @num = Faker::Number.between(from: 1, to: 10)
-    @num2 = Faker::Number.between(from: 1, to: 30)
-    if User.find(@num).owned_equipments.includes(user_id: 1)
-      break
-    end
-  end
+  # loop do
+  #   @num = Faker::Number.between(from: 1, to: 12)
+  #   @num2 = Faker::Number.between(from: 1, to: 30)
+  #   if User.find(@num).owned_equipments.collect{|e| e.user_id}.include?(@num2)
+  #     @num = Faker::Number.between(from: 1, to: 12)
+  #     @num2 = Faker::Number.between(from: 1, to: 30)
+  #   end
+  # end
+  
+    user_equip
 
   @start = Faker::Time.between_dates(from: Date.current - Faker::Number.between(from: 0, to: 7), to: Date.current + Faker::Number.between(from: 1, to: 7), period: :all)
   
