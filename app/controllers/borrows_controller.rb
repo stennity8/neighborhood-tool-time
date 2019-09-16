@@ -3,8 +3,8 @@ class BorrowsController < ApplicationController
 
   def lent_equipment
     @equipment = current_user.owned_equipments
-    @current_borrows = Borrow.currently_lent(current_user.id)
-    @pending_return_borrows = Borrow.pending_return_verification(current_user.id)
+    @current_borrows = current_user.current_lent
+    @pending_return_borrows = current_user.current_lent_pending_return_verification
   end
 
   def borrowed_equipment

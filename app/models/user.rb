@@ -15,9 +15,24 @@ class User < ApplicationRecord
    end
   end
 
-  def lent_out_non_returned
-    binding.pry
+  def current_borrows
+    self.borrows.where("returned = ?", false).left_outer_joins(:equipment).where("available = ?", false)
   end
+  
+  def current_borrows_pending_return_verification
+    self.borrows.where("returned = ?", true).left_outer_joins(:equipment).where("available = ?", false)
+  end
+
+  def current_lent
+    Borrow.where("returned = ?", false).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, self.id)
+  end
+
+  def current_lent_pending_return_verification
+    Borrow.where("returned = ?", true).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, self.id)
+  end
+  # scope :currently_lent, -> (id) {where("returned = ?", false).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, id)}
+    # scope :pending_return_verification, -> (id) {where("returned = ?", true).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, id)}
+
 
   # def lent_out
   #   self.owned_equipments.unavailable.collect do |item|
