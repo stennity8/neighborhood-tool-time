@@ -29,7 +29,10 @@ class BorrowsController < ApplicationController
     @borrow.user_id = params[:user_id]
     @borrow.save
 
-    redirect_to user_equipment_index_path
+    @equipment = Equipment.find(borrow_params[:equipment_id])
+    @equipment.update(available: false)
+
+    redirect_to user_borrowed_tools_path
   end
   
   def edit

@@ -13,7 +13,7 @@
         <th scope="col">Tool Name</th>
         <th scope="col">Lender's Name</th>
         <th scope="col">Borrow Date</th>
-        <th scope="col">Anticipated Return Date</th>
+        <th scope="col">Return Date</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -23,7 +23,7 @@
       <td><%= borrow.equipment.name %></td>
       <td><%= borrow.equipment.user.name %></td>
       <td><%= borrow.date("start") %></td>
-      <td><%= borrow.date("anticipated_end") %></td>
+      <td><%= borrow.date("end") %></td>
       <td>
         <div class="p-1"><%= link_to 'View/Return', edit_user_borrow_path(current_user.id, borrow.id) %></div>
       </td>
