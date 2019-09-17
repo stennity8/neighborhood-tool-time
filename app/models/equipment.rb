@@ -1,12 +1,16 @@
 class Equipment < ApplicationRecord
   belongs_to :user
-  has_many :borrows
+  has_many :borrowsEqui
   has_many :users, through: :borrows
   has_many :equipment_categories
   has_many :categories, through: :equipment_categories
 
   scope :unavailable, -> { where(available: false) }
-  #scope :pending_returned_equipment, -> (user_id) {left_outer_joins(:borrows).where("available = ? AND returned = ? AND equipment.user_id = ?", false, false, user_id)}
+  scope :filter_equipment, -> (params) {left_joins(:categories).where("LOWER(title) = ?", params)}
+
+  def self.search(params)
+    left_joins(:categories).where("LOWER(name) LIKE :search_term OR LOWER(brand) LIKE :search_term OR LOWER(description) LIKE :search_term OR LOWER(title) LIKE :search_term", search_term: "%#{params}%")
+  end
 
   def category_ids=(category_ids)
     category_ids.each do |category_id|
