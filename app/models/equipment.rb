@@ -1,15 +1,17 @@
 class Equipment < ApplicationRecord
   belongs_to :user
-  has_many :borrowsEqui
+  has_many :borrows
   has_many :users, through: :borrows
   has_many :equipment_categories
   has_many :categories, through: :equipment_categories
+
+  validates :name, :description, presence: true
+  validates :categories, presence: { message: ": at least one must be selected/added" }
 
   scope :unavailable, -> { where(available: false) }
   scope :filter_equipment, -> (params) {left_joins(:categories).where("LOWER(title) = ?", params)}
 
   def self.search(params)
-    binding.pry
     left_joins(:categories).where("LOWER(name) LIKE :search_term OR LOWER(brand) LIKE :search_term OR LOWER(description) LIKE :search_term OR LOWER(title) LIKE :search_term", search_term: "%#{params}%").uniq
   end
 
