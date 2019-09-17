@@ -75,13 +75,15 @@ end
     @end = Faker::Time.between_dates(from: @start, to: Date.current + Faker::Number.between(from: 2, to: 7), period: :all)
   end
 
-  Borrow.create(
-    user_id: @num,
-    equipment_id: @num2,
-    start_time: @start,
-    anticipated_end_time: @end
-  )
-  Equipment.find(@num2).update(available: false)
+  if Equipment.find(@num2).available == true
+    Borrow.create(
+      user_id: @num,
+      equipment_id: @num2,
+      start_time: @start,
+      anticipated_end_time: @end
+    )
+    Equipment.find(@num2).update(available: false)
+  end
 end
 
 Equipment.all.each do |equipment|
