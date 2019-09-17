@@ -9,7 +9,8 @@ class Equipment < ApplicationRecord
   scope :filter_equipment, -> (params) {left_joins(:categories).where("LOWER(title) = ?", params)}
 
   def self.search(params)
-    left_joins(:categories).where("LOWER(name) LIKE :search_term OR LOWER(brand) LIKE :search_term OR LOWER(description) LIKE :search_term OR LOWER(title) LIKE :search_term", search_term: "%#{params}%")
+    binding.pry
+    left_joins(:categories).where("LOWER(name) LIKE :search_term OR LOWER(brand) LIKE :search_term OR LOWER(description) LIKE :search_term OR LOWER(title) LIKE :search_term", search_term: "%#{params}%").uniq
   end
 
   def category_ids=(category_ids)
