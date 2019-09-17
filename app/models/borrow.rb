@@ -5,9 +5,6 @@ class Borrow < ApplicationRecord
   
     # scope :currently_lent, -> (id) {where("returned = ?", false).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, id)}
     # scope :pending_return_verification, -> (id) {where("returned = ?", true).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, id)}
-    
-
-
   
   def date(type)
     if type == 'start'

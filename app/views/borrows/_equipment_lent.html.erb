@@ -1,3 +1,10 @@
+<div class="col text-center">
+<% if @pending_return_borrows.empty? && @current_borrows.empty? %>
+<%= image_tag 'sorry-folks-nothing-to-see-here-move-along_large.jpg' %>
+<% end %>
+</div>
+
+<% if !@pending_return_borrows.empty? %>
 <div class="row">
 <h3>Returned Pending Verification</h3>
   <table class="table table-striped table-light table-responsive-sm">
@@ -25,8 +32,9 @@
     </tbody>
   </table>
 </div>
+<% end %>
 
-
+<% if !@current_borrows.empty? %>
 <div class="row">
 <h3>Currently Lent Out</h3>
   <table class="table table-striped table-light table-responsive-sm">
@@ -54,3 +62,4 @@
     </tbody>
   </table>
 </div>
+<% end %>
