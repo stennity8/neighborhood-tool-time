@@ -1,16 +1,25 @@
 class BorrowsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
 
   def lent_equipment
-    @equipment = current_user.owned_equipments
-    @current_borrows = current_user.current_lent
-    @pending_return_borrows = current_user.current_lent_pending_return_verification
+    if validate_user(params[:user_id])
+      redirect_to root_path
+    else
+      @equipment = current_user.owned_equipments
+      @current_borrows = current_user.current_lent
+      @pending_return_borrows = current_user.current_lent_pending_return_verification
+    end
   end
   
   def borrowed_equipment
-    @equipment = current_user.equipments
-    @current_borrows = current_user.current_borrows
-    @pending_return_borrows = current_user.current_borrows_pending_return_verification
+    if validate_user(params[:user_id])
+      redirect_to root_path
+    else
+      @equipment = current_user.equipments
+      @current_borrows = current_user.current_borrows
+      @pending_return_borrows = current_user.current_borrows_pending_return_verification
+    end
   end
 
   
