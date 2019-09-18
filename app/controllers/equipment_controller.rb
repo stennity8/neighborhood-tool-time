@@ -5,9 +5,9 @@ class EquipmentController < ApplicationController
   def index
     if params[:user_id]
       @user = current_user
-      @equipment = current_user.owned_equipments
+      @equipment = current_user.owned_equipments.alpha
     else
-      @equipment = Equipment.all
+      @equipment = Equipment.all.alpha
     end
 
     # Search input
