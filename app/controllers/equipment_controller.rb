@@ -13,7 +13,7 @@ class EquipmentController < ApplicationController
     # Search input
     @equipment = @equipment.search(params[:q].downcase) if params[:q] && !params[:q].empty?
     # Category filter
-    @equipment = @equipment.filter_equipment(params[:equipments][:categories].downcase) if params[:equipments] && params[:equipments][:categories]
+    @equipment = @equipment.filter_equipment(params[:equipments][:categories].downcase) if params[:equipments] && params[:equipments][:categories] != ""
   end
   
   def show
