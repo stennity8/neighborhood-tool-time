@@ -17,7 +17,7 @@
         <br>
       <% else %>
         <h3><%= @user.name %>'s Tool List</h3>
-        <%= link_to 'Create New Tool', new_user_equipment_path(@user.id) %>
+        <%= button_to 'Create New Tool', new_user_equipment_path(@user.id), class: "btn background-accent mb-2" %>
       <% end %>
     </div>
    
