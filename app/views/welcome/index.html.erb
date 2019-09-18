@@ -1,5 +1,7 @@
 <% if current_user%>
 <%= render partial: 'user_welcome' %>
+<%= render partial: 'logged_in_welcome' %>
 <% else %>
-<h1>Welcome</h1>
+<%= render partial: 'user_welcome' %>
+<%= render partial: 'not_logged_in_welcome' %>
 <% end %>
