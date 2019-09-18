@@ -21,7 +21,6 @@ class BorrowsController < ApplicationController
       @pending_return_borrows = current_user.current_borrows_pending_return_verification
     end
   end
-
   
   def show
     @user = User.find(params[:user_id])

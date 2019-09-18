@@ -1,11 +1,12 @@
+<div class="container">
 <% if flash.any? %>
      <% flash.each do |type, msg| %>
         <% if type == "notice" %>
-          <div class="alert alert-success">
+          <div class="alert alert-success mt-2 mx-auto">
         <% elsif type == "alert" %>
-          <div class="alert alert-danger">
+          <div class="alert alert-danger mt-2">
         <% else %>
-          <div class='alert alert-<%= "#{type}" %>'>
+          <div class='alert alert-<%= "#{type}" %> mt-2'>
         <% end %>
         <a href="#" class="close" data-dismiss="alert">&#215;</a>
         <ul>
@@ -17,3 +18,4 @@
       <% end %>
       <% flash.clear %>
 <% end %>
+</div>
