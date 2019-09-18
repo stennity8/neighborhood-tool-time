@@ -74,8 +74,8 @@ end
 
   @start = Faker::Time.between_dates(from: Date.current - Faker::Number.between(from: 0, to: 7), to: Date.current + Faker::Number.between(from: 1, to: 7), period: :all)
   
-  if @start > Date.current
-    @end = nil
+  if @start > Date.current + Faker::Number.between(from: 1, to: 7)
+    @end = @start 
   else
     @end = Faker::Time.between_dates(from: @start, to: Date.current + Faker::Number.between(from: 2, to: 7), period: :all)
   end
@@ -91,8 +91,3 @@ end
   end
 end
 
-# Equipment.all.each do |equipment|
-#   2.times do
-#     equipment.categories << Category.find(Faker::Number.between(from: 1, to: 10))
-#   end
-# end
