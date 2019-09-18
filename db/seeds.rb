@@ -46,13 +46,18 @@ end
 end
 
 30.times do
-  Equipment.create(
-    name: Faker::Commerce.product_name,
-    description: Faker::TvShows::MichaelScott.quote,
-    user_id: Faker::Number.between(from: 1, to: 12),
-    pic_url: Faker::Avatar.image,
-    brand: Faker::TvShows::GameOfThrones.house
-  )
+  e = Equipment.create(
+      name: Faker::Commerce.product_name,
+      description: Faker::TvShows::MichaelScott.quote,
+      user_id: Faker::Number.between(from: 1, to: 12),
+      pic_url: Faker::Avatar.image,
+      brand: Faker::TvShows::GameOfThrones.house
+      )
+    
+    (Faker::Number.between(from: 1, to: 3)).times do
+      e.categories << Category.find(Faker::Number.between(from: 1, to: 10))
+    end
+    e.save
 end
 
 100.times do
@@ -86,8 +91,8 @@ end
   end
 end
 
-Equipment.all.each do |equipment|
-  2.times do
-    equipment.categories << Category.find(Faker::Number.between(from: 1, to: 10))
-  end
-end
+# Equipment.all.each do |equipment|
+#   2.times do
+#     equipment.categories << Category.find(Faker::Number.between(from: 1, to: 10))
+#   end
+# end
