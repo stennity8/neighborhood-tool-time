@@ -3,21 +3,21 @@
       <div class="col-md-3">
         <h2>Your Neighborhood's Tools</h2>
         <p>Check out this section of the application to view and search a list of all the available tools in your neighborhood.</p>
-        <p><a class="btn background-accent" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn background-accent" href="/equipment" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-md-3">
         <h2><%= current_user.name %>'s Tools</h2>
         <p>Add another tool to your list and make it available to the neighborhood.</p>
-        <p><a class="btn background-accent" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-3">
-        <h2><%= current_user.name %>'s Lent Out Tools</h2>
-        <p>See who is borrowing your tools.  Has a borrowed tool been returned?  You can update your borrowed tool's status here as well.</p>
-        <p><a class="btn background-accent" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn background-accent" href="/users/<%= current_user.id %>/equipment" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-md-3">
         <h2><%= current_user.name %>'s Borrowed Tools</h2>
         <p>See what tools you're borrowing.  When you're done make sure to mark them returned!</p>
-        <p><a class="btn background-accent" href="#" role="button">View details &raquo;</a></p>
+        <p><a class="btn background-accent" href="/users/<%= current_user.id %>/borrowed_tools" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-3">
+        <h2><%= current_user.name %>'s Lent Out Tools</h2>
+        <p>See who is borrowing your tools.  Has a borrowed tool been returned?  You can update your borrowed tool's status here as well.</p>
+        <p><a class="btn background-accent" href="/users/<%= current_user.id %>/lent_tools" role="button">View details &raquo;</a></p>
       </div>
     </div>

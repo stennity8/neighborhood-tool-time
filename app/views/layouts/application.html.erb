@@ -35,18 +35,6 @@
       <li class="nav-item">
         <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/lent_tools">Lent Out Tools</a>
       </li>
-      <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Tools
-        </a>
-        <div class="dropdown-menu background-dark-primary " aria-labelledby="navbarDropdown">
-          <a class="dropdown-item text-light" href="/equipment">All Tools</a>
-          <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/equipment">Owned Tools</a>
-          <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/borrowed_tools">Borrowed Tools</a>
-          <a class="dropdown-item text-light" href="/users/<%= current_user.id %>/lent_tools">Lent Out Tools</a>
-        </div>
-      </li>-->
     </ul>
     <form class="form-inline">
       <%= link_to('Log Out', destroy_user_session_path, method: :delete, class: "nav-item nav-link text-icons") %>
