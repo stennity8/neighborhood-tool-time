@@ -22,14 +22,13 @@ class BorrowsController < ApplicationController
     end
   end
   
-  def show
-    @user = User.find(user_id)
-    @borrow = [Borrow.find(borrow_id)]
-  end
-  
   def new
-    @borrow = Borrow.new
-    @equipment = Equipment.find(borrow_id)
+    if validate_user(user_id)
+      redirect_to root_path
+    else
+      @borrow = Borrow.new
+      @equipment = Equipment.find(borrow_id)
+    end
   end
   
   def create
@@ -50,12 +49,16 @@ class BorrowsController < ApplicationController
   end
   
   def edit
-    @borrow = Borrow.find(borrow_id)
-    @equipment = @borrow.equipment
+    if validate_user(user_id)
+
+      redirect_to root_path
+    else
+      @borrow = Borrow.find(borrow_id)
+      @equipment = @borrow.equipment
+    end
   end
   
   def update
-    binding.pry
     @borrow = Borrow.find(borrow_id)
     
     # Check for return param
@@ -68,31 +71,32 @@ class BorrowsController < ApplicationController
         @borrow.equipment.available = true
         @borrow.save
         @borrow.equipment.save
-
         redirect_to user_lent_tools_path
       else
       # If borrower marks tool returned
         @borrow.update(borrow_params)
         @borrow.end_time = Date.current
         @borrow.save
-        
         redirect_to user_borrowed_tools_path
       end
     else
       @borrow.update(borrow_params)
-      
+
       redirect_to user_borrowed_tools_path
     end
     
   end
   
   def destroy
-    @borrow = Borrow.find(borrow_id)
-    @borrow.destroy
-    flash[:danger] = "The borrow has been deleted."
+    if validate_user(user_id)
+      redirect_to root_path
+    else
+      @borrow = Borrow.find(borrow_id)
+      @borrow.destroy
+      flash[:danger] = "The borrow has been deleted."
 
-    redirect_to user_borrowed_tools_path
-
+      redirect_to user_borrowed_tools_path
+    end
   end
 
   private 

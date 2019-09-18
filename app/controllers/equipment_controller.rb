@@ -3,7 +3,7 @@ class EquipmentController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if params[:user_id]
+    if user_id
       @user = current_user
       @equipment = current_user.owned_equipments.alpha
     else
@@ -17,20 +17,24 @@ class EquipmentController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:user_id])
-    @equipment = [Equipment.find(params[:id])]
+    @user = User.find(user_id)
+    @equipment = [Equipment.find(equipment_id)]
   end
 
   def new
-    @equipment = Equipment.new
+    if validate_user(user_id)
+      redirect_to root_path
+    else
+      @equipment = Equipment.new
+    end
   end
 
   def create
-    if validate_user(params[:user_id])
+    if validate_user(user_id)
       redirect_to root_path
     else  
       @equipment = Equipment.new(equipment_params)
-      @equipment.user_id = params[:user_id]
+      @equipment.user_id = user_id
 
       if @equipment.save
         redirect_to user_equipment_index_path
@@ -41,11 +45,15 @@ class EquipmentController < ApplicationController
   end
   
   def edit
-    @equipment = Equipment.find(params[:id])
+    @equipment = Equipment.find(equipment_id)
+
+    if validate_user(user_id) || @equipment.user_id != user_id
+      redirect_to root_path
+    end
   end
   
   def update
-    @equipment = Equipment.find(params[:id])
+    @equipment = Equipment.find(equipment_id)
     equipment_user_id = @equipment.user_id
 
     if validate_user(equipment_user_id)
@@ -61,7 +69,7 @@ class EquipmentController < ApplicationController
   end
   
   def destroy
-    @equipment = Equipment.find(params[:id])
+    @equipment = Equipment.find(equipment_id)
     equipment_user_id = @equipment.user_id
 
     if validate_user(equipment_user_id)
@@ -80,6 +88,14 @@ class EquipmentController < ApplicationController
   end
 
   private 
+
+  def user_id
+    params[:user_id]
+  end
+
+  def equipment_id
+    params[:id]
+  end
 
   def equipment_params
     params.require(:equipment).permit(:name, :brand, :description, :pic_url, category_ids:[], categories_attributes: [:title])
