@@ -16,28 +16,19 @@ class User < ApplicationRecord
   end
 
   def current_borrows
-    self.borrows.where("returned = ?", false).left_outer_joins(:equipment).where("available = ?", false)
+    self.borrows.where("returned = ? AND return_verified = ?", false, false).left_outer_joins(:equipment).where("available = ?", false)
   end
   
   def current_borrows_pending_return_verification
-    self.borrows.where("returned = ?", true).left_outer_joins(:equipment).where("available = ?", false)
+    self.borrows.where("returned = ? AND return_verified = ?", true, false).left_outer_joins(:equipment).where("available = ?", false)
   end
 
   def current_lent
-    Borrow.where("returned = ?", false).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, self.id)
+    Borrow.where("returned = ? AND return_verified = ?", false, false).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, self.id)
   end
 
   def current_lent_pending_return_verification
-    Borrow.where("returned = ?", true).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, self.id)
+    Borrow.where("returned = ? AND return_verified = ?", true, false).left_outer_joins(:equipment).where("available = ? AND equipment.user_id = ?", false, self.id)
   end
 
-  # def lent_out
-  #   self.owned_equipments.unavailable.collect do |item|
-  #     item.borrows.where("start_time <= ? AND end_time > ?", DateTime.now, DateTime.now)
-  #   end.flatten
-  # end
-
-  # def borrowed
-  #   self.borrows.where("start_time <= ? AND end_time > ?", DateTime.now, DateTime.now)
-  # end
 end

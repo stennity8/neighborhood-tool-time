@@ -49,6 +49,7 @@ class BorrowsController < ApplicationController
   end
   
   def update
+    binding.pry
     @borrow = Borrow.find(params[:id])
     
     # Check for return param
@@ -57,6 +58,7 @@ class BorrowsController < ApplicationController
       if current_user.id != @borrow.user_id  
         @borrow.update(borrow_params)
         @borrow.end_time = Date.current.strftime('%Y-%m-%d')
+        @borrow.return_verified = true
         @borrow.equipment.available = true
         @borrow.save
         @borrow.equipment.save
