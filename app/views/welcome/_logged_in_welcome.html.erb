@@ -1,21 +1,25 @@
   <div class="container text-center">
     <div class="row justify-content-center">
       <div class="col-md-3">
+        <%= image_tag 'maximillian-conacher-sPpe2D7VbpM-unsplash.jpg', class: "bd-placeholder-img rounded-circle", size: "140x140" %>
         <h2>Your Neighborhood's Tools</h2>
         <p>Check out this section of the application to view and search a list of all the available tools in your neighborhood.</p>
         <p><a class="btn dark-primary-btn" href="/equipment" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-md-3">
+        <%= image_tag 'broken-builder-carpenter-209235.jpg', class: "bd-placeholder-img rounded-circle", size: "140x140" %>
         <h2><%= current_user.name %>'s Tools</h2>
         <p>Add another tool to your list and make it available to the neighborhood.</p>
         <p><a class="btn dark-primary-btn" href="/users/<%= current_user.id %>/equipment" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-md-3">
+        <%= image_tag 'garden-gardening-grass-589', class: "bd-placeholder-img rounded-circle", size: "140x140" %>
         <h2><%= current_user.name %>'s Borrowed Tools</h2>
         <p>See what tools you're borrowing.  When you're done make sure to mark them returned!</p>
         <p><a class="btn dark-primary-btn" href="/users/<%= current_user.id %>/borrowed_tools" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-md-3">
+        <%= image_tag 'carpenter-carpentry-close-up-1249611.jpg', class: "bd-placeholder-img rounded-circle", size: "140x140" %>
         <h2><%= current_user.name %>'s Lent Out Tools</h2>
         <p>See who is borrowing your tools.  Has a borrowed tool been returned?  You can update your borrowed tool's status here as well.</p>
         <p><a class="btn dark-primary-btn" href="/users/<%= current_user.id %>/lent_tools" role="button">View details &raquo;</a></p>
