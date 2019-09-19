@@ -2,16 +2,27 @@
     <div class="row justify-content-center">
       <% @equipment.each do |eq| %>
       <% if @equipment.length == 1 %>
-        <div class="card h-100 w-75">
-      <% else%>
+      <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12 mb-3">
+        <div class="card h-100">
+      <% else %>
       <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3">
         <div class="card h-100">
       <% end %>
+
+      <% if @equipment.length == 1 %>
+          <% if eq.pic_url != "" || eq.pic_url != nil %>
+          <img src="<%= eq.pic_url %>" class="borrow-image mx-auto">
+          <% else%>
+          <%= image_tag 'no-image-available.jpg', class: "borrow-image mx-auto" %>
+          <% end %>
+      <% else %>
           <% if eq.pic_url != "" || eq.pic_url != nil %>
           <img src="<%= eq.pic_url %>" class="card-img-top mx-auto">
           <% else%>
           <%= image_tag 'no-image-available.jpg', class: "card-img-top mx-auto" %>
           <% end %>
+      <% end %>
+
           <div class="card-body">
             <h5 class="card-title font-weight-bold"><%= eq.name %></td>
             </h5>
