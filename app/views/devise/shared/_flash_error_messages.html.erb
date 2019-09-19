@@ -1,5 +1,5 @@
 <div class="container">
-<% if flash.any? %>
+  <% if flash.any? %>
      <% flash.each do |type, msg| %>
         <% if type == "notice" %>
           <div class="alert alert-success mt-2 mx-auto">
@@ -17,5 +17,5 @@
         </div>
       <% end %>
       <% flash.clear %>
-<% end %>
+  <% end %>
 </div>

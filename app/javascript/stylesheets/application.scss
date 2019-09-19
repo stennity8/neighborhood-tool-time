@@ -60,3 +60,9 @@ a.dropdown-item:hover {
 .rounded-container {
   border-radius: 25px;
 }
+
+.card-img-top {
+  width: 100% !important;
+  max-height: 300px !important;
+  object-fit: cover;
+}
