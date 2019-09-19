@@ -47,7 +47,7 @@ class EquipmentController < ApplicationController
   def edit
     @equipment = Equipment.find(equipment_id)
 
-    if validate_user(user_id) || @equipment.user_id != user_id
+    if validate_user(user_id) || @equipment.user_id != user_id.to_i
       redirect_to root_path
     end
   end
