@@ -19,6 +19,15 @@ def user_equip
   end
 end
 
+def add_category(e)
+  category = Category.find(Faker::Number.between(from: 1, to: 10))
+  if e.categories.include?(category)
+    add_category(e)
+  else
+    e.categories << Category.find(Faker::Number.between(from: 1, to: 10))
+  end
+end
+
 User.create(
   name: "Chuck Gato",
   email: "chuck@chuck.com",
@@ -55,21 +64,13 @@ end
       )
     
     (Faker::Number.between(from: 1, to: 3)).times do
-      e.categories << Category.find(Faker::Number.between(from: 1, to: 10))
+      add_category(e)
     end
-    e.save
+
+  e.save
 end
 
 100.times do
-  # loop do
-  #   @num = Faker::Number.between(from: 1, to: 12)
-  #   @num2 = Faker::Number.between(from: 1, to: 30)
-  #   if User.find(@num).owned_equipments.collect{|e| e.user_id}.include?(@num2)
-  #     @num = Faker::Number.between(from: 1, to: 12)
-  #     @num2 = Faker::Number.between(from: 1, to: 30)
-  #   end
-  # end
-  
     user_equip
 
   @start = Faker::Time.between_dates(from: Date.current - Faker::Number.between(from: 0, to: 7), to: Date.current + Faker::Number.between(from: 1, to: 7), period: :all)
