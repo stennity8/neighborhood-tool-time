@@ -25,7 +25,7 @@
       <td><%= borrow.date("start") %></td>
       <td><%= borrow.date("end") %></td>
       <td>
-        <div class="p-1"><%= link_to 'View/Return', edit_user_borrow_path(current_user.id, borrow.id) %></div>
+        <div class="p-1"><%= link_to 'View/Return', edit_user_borrow_path(current_user.id, borrow.id), class: "btn background-accent" %></div>
       </td>
     </tr>
     <% end %>
@@ -55,7 +55,7 @@
       <td><%= borrow.date("start") %></td>
       <td><%= borrow.date("anticipated_end") %></td>
       <td>
-        <div class="p-1"><%= link_to 'View/Return', edit_user_borrow_path(current_user.id, borrow.id) %></div>
+        <div class="p-1"><%= link_to 'View/Return', edit_user_borrow_path(current_user.id, borrow.id), class: "btn background-accent" %></div>
       </td>
     </tr>
     <% end %>
