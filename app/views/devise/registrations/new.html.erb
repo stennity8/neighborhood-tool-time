@@ -3,10 +3,9 @@
 
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    
-
-
     <div class="row justify-content-center align-items-center bg-light mt-5 col col-lg-8 mx-auto rounded-container" >
+    <%= render "devise/shared/flash_error_messages", resource: resource %>
+
       <div class="col col-10">
         <div class="row justify-content-center align-items-center m-3">
         <%= render "devise/shared/error_messages", resource: resource %>
