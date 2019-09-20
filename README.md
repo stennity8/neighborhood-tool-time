@@ -28,7 +28,12 @@ Video Walk-through: Coming Soon
 4. Run `rails s` and navigate to `localhost:3000`
 5. You can now register and play around with the app.
 
-\*\*Note: This app was created using Ruby on Rails 6, which inlcudes Webpacker and Babel. There may additional set up requirments to get these to work on your system. You will also need to make sure you are running Ruby version 2.5 or greater.
+\*\*Note: This app was created using Ruby on Rails 6, which inlcudes Webpacker and Babel. There may additional set up requirments to get these to work on your system. You will also need to make sure you are running Ruby version 2.5 or greater. Also, in order to use the GitHub login functionality you will need to create a .env file in the root directory. Within the .env file you will need to place:
+
+```
+GITHUB_KEY=your GitHub secret key here
+GITHUB_SECRET=your GitHub secret here
+```
 
 ### Contributing
 
