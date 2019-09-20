@@ -24,7 +24,7 @@ def add_category(e)
   if e.categories.include?(category)
     add_category(e)
   else
-    e.categories << Category.find(Faker::Number.between(from: 1, to: 10))
+    return e.categories << Category.find(Faker::Number.between(from: 1, to: 10))
   end
 end
 
@@ -57,7 +57,7 @@ end
 30.times do
   e = Equipment.create(
       name: Faker::Commerce.product_name,
-      description: Faker::TvShows::MichaelScott.quote,
+      description: Faker::ChuckNorris.fact,
       user_id: Faker::Number.between(from: 1, to: 12),
       pic_url: Faker::Avatar.image,
       brand: Faker::TvShows::GameOfThrones.house

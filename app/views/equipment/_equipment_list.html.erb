@@ -11,7 +11,7 @@
         <br>
         <%= form_tag("/equipment", method: 'get') do %>
         <%= label_tag(:category_id, "Filter by Category:") %>
-        <%= collection_select(:equipments, :categories, Category.all, :title, :title, {:include_blank => '' }) %>
+        <%= collection_select(:equipments, :categories, Category.all.alpha, :title, :title, {:include_blank => '' }) %>
         <%= submit_tag("Filter", class: "btn background-accent") %>
         <% end %>
         <br>

@@ -10,7 +10,7 @@ class Equipment < ApplicationRecord
 
   scope :unavailable, -> { where(available: false) }
   scope :filter_equipment, -> (params) {left_joins(:categories).where("LOWER(title) = ?", params)}
-  scope :alpha, ->{ order(:name) }
+  scope :alpha, -> { order(:name) }
 
   def self.search(params)
     left_joins(:categories).where("LOWER(name) LIKE :search_term OR LOWER(brand) LIKE :search_term OR LOWER(description) LIKE :search_term OR LOWER(title) LIKE :search_term", search_term: "%#{params}%").uniq
