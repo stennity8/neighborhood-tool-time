@@ -32,7 +32,7 @@
             <li class="list-group-item "><span class="font-weight-bold">Brand:</span> <%= eq.brand %></li>
             <li class="list-group-item"><span class="font-weight-bold">Categories:</span>
               <ul>
-                <% eq.categories.each do |category| %>
+                <% eq.categories.alpha.each do |category| %>
                 <li><%= category.title %></li>
                 <% end %>
               </ul>

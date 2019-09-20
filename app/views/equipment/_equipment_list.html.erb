@@ -3,10 +3,11 @@
       <% if @user.nil? %>
         <h3>Tool List</h3>
         
+        <div class="form-group row justify-content-center">
         <%= form_tag("/equipment", method: 'get') do %>
         <%= label_tag(:q, "Search All Tools for:") %>
         <%= text_field_tag(:q) %>
-        <%= submit_tag("Search", class: "btn background-accent") %>
+        <%= submit_tag("Search", class: "btn background-accent mr-3") %>
         <% end %>
         <br>
         <%= form_tag("/equipment", method: 'get') do %>
@@ -14,7 +15,8 @@
         <%= collection_select(:equipments, :categories, Category.all.alpha, :title, :title, {:include_blank => '' }) %>
         <%= submit_tag("Filter", class: "btn background-accent") %>
         <% end %>
-        <br>
+</div>
+       
       <% else %>
         <h3><%= @user.name %>'s Tool List</h3>
         <%= button_to 'Create New Tool', new_user_equipment_path(@user.id), class: "btn background-accent mb-2" %>
