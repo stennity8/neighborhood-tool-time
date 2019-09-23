@@ -34,6 +34,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 # gem 'bootstrap', '~> 4.3.1'
 # gem 'jquery-rails'
 gem 'simple_form'
+gem 'rails_12factor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
