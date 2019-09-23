@@ -20,7 +20,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: shawn
+  username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['NEIGHBORHOOD_TOOL_TIME_DATABASE_PASSWORD'] %>
 
 development:
@@ -74,8 +74,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-# production:
-#   <<: *default
-#   database: neighborhood_tool_time_production
-#   username: neighborhood_tool_time
-#   password: <%= ENV['NEIGHBORHOOD_TOOL_TIME_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: neighborhood_tool_time_production
+  username: neighborhood_tool_time
+  password: <%= ENV['NEIGHBORHOOD_TOOL_TIME_DATABASE_PASSWORD'] %>
