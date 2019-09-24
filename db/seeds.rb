@@ -14,7 +14,7 @@ EquipmentCategory.destroy_all
 def user_equip
   @num = Faker::Number.between(from: 1, to: 12)
   @num2 = Faker::Number.between(from: 1, to: 30)
-  if User.find(@num).owned_equipments.collect{|e| e.user_id}.include?(@num2)
+  if User.find(@num).owned_equipments.collect{|e| e.id}.include?(@num2)
     user_equip
   end
 end
@@ -24,7 +24,7 @@ def add_category(e)
   if e.categories.include?(category)
     add_category(e)
   else
-    return e.categories << Category.find(Faker::Number.between(from: 1, to: 10))
+    return e.categories << category
   end
 end
 
