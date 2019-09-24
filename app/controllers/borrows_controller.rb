@@ -1,40 +1,29 @@
 class BorrowsController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
+  before_action only: [:lent_equipment, :borrowed_equipment, :new, :create, :edit, :destroy] do
+    validate_user(user_id)
+  end
 
   def lent_equipment
-    if validate_user(user_id)
-      redirect_to root_path
-    else
       @equipment = current_user.owned_equipments
       @current_borrows = current_user.current_lent
       @pending_return_borrows = current_user.current_lent_pending_return_verification
-    end
   end
   
   def borrowed_equipment
-    if validate_user(user_id)
-      redirect_to root_path
-    else
+
       @equipment = current_user.equipments
       @current_borrows = current_user.current_borrows
       @pending_return_borrows = current_user.current_borrows_pending_return_verification
-    end
   end
   
   def new
-    if validate_user(user_id)
-      redirect_to root_path
-    else
       @borrow = Borrow.new
       @equipment = Equipment.find(borrow_id)
-    end
   end
   
   def create
-    if validate_user(user_id)
-      redirect_to root_path
-    else
       @borrow = Borrow.new(borrow_params)
       @borrow.user_id = user_id
       if @borrow.save
@@ -45,17 +34,11 @@ class BorrowsController < ApplicationController
       else
         render :new
       end
-    end
   end
   
   def edit
-    if validate_user(user_id)
-
-      redirect_to root_path
-    else
       @borrow = Borrow.find(borrow_id)
       @equipment = @borrow.equipment
-    end
   end
   
   def update
@@ -88,15 +71,11 @@ class BorrowsController < ApplicationController
   end
   
   def destroy
-    if validate_user(user_id)
-      redirect_to root_path
-    else
       @borrow = Borrow.find(borrow_id)
       @borrow.destroy
       flash[:danger] = "The borrow has been deleted."
 
       redirect_to user_borrowed_tools_path
-    end
   end
 
   private 

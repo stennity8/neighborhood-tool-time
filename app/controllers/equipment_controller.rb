@@ -1,7 +1,9 @@
 class EquipmentController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
-
+  before_action only: [:new, :create, :update, :destroy] do
+    validate_user(user_id)
+  end
   def index
     if user_id
       @user = current_user
@@ -22,17 +24,10 @@ class EquipmentController < ApplicationController
   end
 
   def new
-    if validate_user(user_id)
-      redirect_to root_path
-    else
       @equipment = Equipment.new
-    end
   end
 
   def create
-    if validate_user(user_id)
-      redirect_to root_path
-    else  
       @equipment = Equipment.new(equipment_params)
       @equipment.user_id = user_id
 
@@ -41,7 +36,6 @@ class EquipmentController < ApplicationController
       else
       render :new
       end
-    end
   end
   
   def edit
@@ -56,25 +50,18 @@ class EquipmentController < ApplicationController
     @equipment = Equipment.find(equipment_id)
     equipment_user_id = @equipment.user_id
 
-    if validate_user(equipment_user_id)
-      redirect_to root_path
-    else
       @equipment.categories.clear
       if @equipment.update(equipment_params)
         redirect_to user_equipment_index_path
       else
         render :update
       end
-    end
   end
   
   def destroy
     @equipment = Equipment.find(equipment_id)
     equipment_user_id = @equipment.user_id
 
-    if validate_user(equipment_user_id)
-      redirect_to root_path
-    else
       if @equipment.borrows.empty?
         @equipment.categories.clear
         @equipment.destroy
@@ -84,7 +71,6 @@ class EquipmentController < ApplicationController
         flash[:danger] = "This tool can not be deleted. It is or has been lent out and a record is being kept."
         redirect_to user_equipment_index_path
       end
-    end
   end
 
   private 
