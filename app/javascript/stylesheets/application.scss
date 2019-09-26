@@ -86,3 +86,13 @@ a.dropdown-item:hover {
 a.dark-primary-btn:hover {
   color: $accent !important;
 }
+
+@media (max-width: 600px) {
+  h1.display-3 {
+    font-size: 2.5rem;
+  }
+}
+
+// h1 {
+//   font-size: 1vw;
+// }
