@@ -6,9 +6,9 @@
 
 This app was inspired by my neighbor. Within the same week we had both needed a wheel barrow for landscape projects. He casually mentioned that someone in the neighborhood has to have one and how it would be great if there was an app to be able to see if a neighbor had a wheel barrow to borrow.
 
-Heroku link: Coming Soon
+Heroku link: https://neighborhood-tool-time.herokuapp.com/
 
-Video Walk-through: Coming Soon
+Video Walk-through: https://www.youtube.com/watch?v=AyRlsvqJtx8
 
 ---
 
